@@ -19,33 +19,44 @@ function checkAnswer() {
   }
 }
 
-let images = [
-  "images/pic1.jpeg","images/pic1.jpeg",
-  "images/pic2.jpeg","images/pic2.jpeg",
-  "images/pic3.jpeg","images/pic3.jpeg",
-  "images/pic4.jpeg","images/pic4.jpeg",
-  "images/pic5.jpeg","images/pic5.jpeg",
-  "images/pic6.jpeg","images/pic6.jpeg",
-  "images/pic7.jpeg","images/pic7.jpeg",
-  "images/pic8.jpeg","images/pic8-1.jpeg",
-  "images/pic9.jpeg","images/pic9.jpeg",
-  "images/pic10.jpeg","images/pic10-1.jpeg"
-];
+// let images = [
+//   "images/pic1.jpeg","images/pic1.jpeg",
+//   "images/pic2.jpeg","images/pic2.jpeg",
+//   "images/pic3.jpeg","images/pic3.jpeg",
+//   "images/pic4.jpeg","images/pic4.jpeg",
+//   "images/pic5.jpeg","images/pic5.jpeg",
+//   "images/pic6.jpeg","images/pic6.jpeg",
+//   "images/pic7.jpeg","images/pic7.jpeg",
+//   "images/pic8.jpeg","images/pic8-1.jpeg",
+//   "images/pic9.jpeg","images/pic9.jpeg",
+//   "images/pic10.jpeg","images/pic10-1.jpeg"
+// ];
 
 const cardData = [
   { img: "pic1.jpeg", matchGroup: "a" },
+  { img: "pic1.jpeg", matchGroup: "a" },
+  { img: "pic2.jpeg", matchGroup: "b" },
   { img: "pic2.jpeg", matchGroup: "b" },
   { img: "pic3.jpeg", matchGroup: "c" },
+  { img: "pic3.jpeg", matchGroup: "c" },
+  { img: "pic4.jpeg", matchGroup: "d" },
   { img: "pic4.jpeg", matchGroup: "d" },
   { img: "pic5.jpeg", matchGroup: "e" },
+  { img: "pic5.jpeg", matchGroup: "e" },
   { img: "pic6.jpeg", matchGroup: "f" },
+  { img: "pic6.jpeg", matchGroup: "f" },
+  { img: "pic7.jpeg", matchGroup: "g" },
   { img: "pic7.jpeg", matchGroup: "g" },
   { img: "pic8.jpeg", matchGroup: "h" },
   { img: "pic8-1.jpeg", matchGroup: "h" },
   { img: "pic9.jpeg", matchGroup: "i" },
+  { img: "pic9.jpeg", matchGroup: "i" },
   { img: "pic10.jpeg", matchGroup: "j" },
-  { img: "pic10-1.jpeg", matchGroup: "j" }
-  // ... continue for all 15 images
+  { img: "pic10-1.jpeg", matchGroup: "j" },
+  { img: "pic11.jpeg", matchGroup: "k" },
+  { img: "pic11.jpeg", matchGroup: "k" },
+  { img: "pic12.jpeg", matchGroup: "l" },
+  { img: "pic12.jpeg", matchGroup: "l" },
 ];
 
 function shuffle(array) {
