@@ -160,10 +160,39 @@ window.addEventListener("DOMContentLoaded", () => {
       emoji.style.top = 50 + Math.random() * 200 + "px";
       emoji.style.zIndex = 9999;
       document.body.appendChild(emoji);
-      setTimeout(() => emoji.remove(), 1200);
+
+      // Animate them floating upward
+      let top = parseInt(emoji.style.top);
+      const floatInterval = setInterval(() => {
+        top -= 2;
+        emoji.style.top = top + "px";
+        if (top < -50) {
+          clearInterval(floatInterval);
+          emoji.remove();
+        }
+      }, 20);
     }
-    alert("How dare you say NO! Try again 😛");
+
+    // Show temporary on-page text
+    const msg = document.createElement("div");
+    msg.innerText = "💔 How dare you say NO! Try again 😛";
+    msg.style.position = "fixed";
+    msg.style.top = "20%";
+    msg.style.left = "50%";
+    msg.style.transform = "translateX(-50%)";
+    msg.style.background = "rgba(255,255,255,0.9)";
+    msg.style.padding = "15px 25px";
+    msg.style.border = "2px solid red";
+    msg.style.borderRadius = "10px";
+    msg.style.fontSize = "20px";
+    msg.style.zIndex = 10000;
+    document.body.appendChild(msg);
+
+    setTimeout(() => {
+      msg.remove();
+    }, 2000);
   });
+
 
   document.getElementById("yes-btn").addEventListener("click", () => {
     document.getElementById("question").classList.add("hidden");
