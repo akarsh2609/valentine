@@ -182,7 +182,7 @@ document.getElementById("no-btn").addEventListener("click", () => {
   // On-page NO text
   const msg = document.createElement("div");
   const oos = "OO".repeat(noClickCount + 1); // add extra O each click
-  msg.innerText = `💔 How dare you say N${oos}!!!`;
+  msg.innerText = `💔 How dare you say N${oos} REEEE!!!`;
   msg.style.position = "fixed";
   msg.style.top = "20%";
   msg.style.left = "50%";
@@ -219,7 +219,7 @@ const sevenDays = [
   { text: "I promise to stay at your side 💕", day: "Promise Day" },
   { text: "Virtual hug for ya! 🤗", day: "Hug Day" },
   { text: "You wear my kisses better than me 😘", day: "Kiss Day" },
-  { text: "Happy Valentines Day ❤️", day: "Valentine's Day" }
+  { text: "Happy Valentines Day REEEEEEEE❤️", day: "Valentine's Day" }
 ];
 
 let currentDay = 0;
