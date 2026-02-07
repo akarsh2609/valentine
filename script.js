@@ -49,9 +49,9 @@ function startGame() {
 }
 
 function flip(card) {
-  if (lock || card === first) return;
+  if (lock || card === first || card.classList.contains("matched")) return;
 
-  card.querySelector("img").style.display = "block";
+  card.classList.add("flip");
 
   if (!first) {
     first = card;
@@ -59,25 +59,46 @@ function flip(card) {
     second = card;
     lock = true;
 
-    if (
-      first.querySelector("img").src ===
-      second.querySelector("img").src
-    ) {
+    const img1 = first.querySelector("img").src;
+    const img2 = second.querySelector("img").src;
+
+    if (img1 === img2) {
+      first.classList.add("matched");
+      second.classList.add("matched");
+      popHearts(first);
+      popHearts(second);
       matched++;
       reset();
+
       if (matched === images.length / 2) {
-        document.getElementById("game").classList.add("hidden");
-        document.getElementById("question").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("game").classList.add("hidden");
+          document.getElementById("question").classList.remove("hidden");
+        }, 800);
       }
     } else {
       setTimeout(() => {
-        first.querySelector("img").style.display = "none";
-        second.querySelector("img").style.display = "none";
+        first.classList.remove("flip");
+        second.classList.remove("flip");
         reset();
       }, 800);
     }
   }
 }
+
+function popHearts(card) {
+  const rect = card.getBoundingClientRect();
+  for (let i = 0; i < 5; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = rect.left + 40 + "px";
+    heart.style.top = rect.top + 40 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+  }
+}
+
 
 function reset() {
   [first, second, lock] = [null, null, false];
