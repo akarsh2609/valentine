@@ -32,6 +32,23 @@ let images = [
   "images/pic10.jpeg","images/pic10-1.jpeg"
 ];
 
+const cardData = [
+  { img: "pic1.jpg", matchGroup: "a" },
+  { img: "pic2.jpg", matchGroup: "b" },
+  { img: "pic3.jpg", matchGroup: "c" },
+  { img: "pic4.jpg", matchGroup: "d" },
+  { img: "pic5.jpg", matchGroup: "e" },
+  { img: "pic6.jpg", matchGroup: "f" },
+  { img: "pic7.jpg", matchGroup: "g" },
+  { img: "pic8.jpg", matchGroup: "h" },
+  { img: "pic8-1.jpg", matchGroup: "h" },
+  { img: "pic9.jpg", matchGroup: "i" },
+  { img: "pic10.jpg", matchGroup: "j" },
+  { img: "pic10-1.jpg", matchGroup: "j" }
+  // ... continue for all 15 images
+];
+
+
 let first = null, second = null, lock = false, matched = 0;
 
 function startGame() {
@@ -81,32 +98,38 @@ function flip(card) {
     second = card;
     lock = true;
 
-    const img1 = first.querySelector("img").src;
-    const img2 = second.querySelector("img").src;
+    // Check if they can match
+    const canMatch = first.dataset.match === second.dataset.match;
 
-    if (img1 === img2) {
+    if (canMatch) {
       first.classList.add("matched");
       second.classList.add("matched");
       popHearts(first);
       popHearts(second);
       matched++;
-      reset();
-
-      if (matched === images.length / 2) {
-        setTimeout(() => {
-          document.getElementById("game").classList.add("hidden");
-          document.getElementById("question").classList.remove("hidden");
-        }, 800);
-      }
     } else {
+      // Not a match: flip back after delay
       setTimeout(() => {
         first.classList.remove("flip");
         second.classList.remove("flip");
-        reset();
       }, 800);
     }
+
+    setTimeout(() => {
+      reset();
+      // Check if all matched
+      if (matched === cardData.length / 2) {
+        document.getElementById("game-board").classList.add("hidden");
+        document.getElementById("question").classList.remove("hidden");
+      }
+    }, 900);
   }
 }
+
+function reset() {
+  [first, second, lock] = [null, null, false];
+}
+
 
 function popHearts(card) {
   const rect = card.getBoundingClientRect();
