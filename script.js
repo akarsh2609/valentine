@@ -181,7 +181,7 @@ document.getElementById("no-btn").addEventListener("click", () => {
   // On-page NO text
   const msg = document.createElement("div");
   const oos = "OO".repeat(noClickCount + 1); // add extra O each click
-  msg.innerText = `💔 How dare you say N${oos}!!`;
+  msg.innerText = `💔 How dare you say N${oos}!!!`;
   msg.style.position = "fixed";
   msg.style.top = "20%";
   msg.style.left = "50%";
