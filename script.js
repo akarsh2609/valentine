@@ -19,19 +19,6 @@ function checkAnswer() {
   }
 }
 
-// let images = [
-//   "images/pic1.jpeg","images/pic1.jpeg",
-//   "images/pic2.jpeg","images/pic2.jpeg",
-//   "images/pic3.jpeg","images/pic3.jpeg",
-//   "images/pic4.jpeg","images/pic4.jpeg",
-//   "images/pic5.jpeg","images/pic5.jpeg",
-//   "images/pic6.jpeg","images/pic6.jpeg",
-//   "images/pic7.jpeg","images/pic7.jpeg",
-//   "images/pic8.jpeg","images/pic8-1.jpeg",
-//   "images/pic9.jpeg","images/pic9.jpeg",
-//   "images/pic10.jpeg","images/pic10-1.jpeg"
-// ];
-
 const cardData = [
   { img: "pic1.jpeg", matchGroup: "a" },
   { img: "pic1.jpeg", matchGroup: "a" },
@@ -159,7 +146,71 @@ function popHearts(card) {
   }
 }
 
+document.getElementById("no-btn").onclick = () => {
+  // Add crying emoji animation
+  const emoji = document.createElement("div");
+  emoji.innerText = "😭";
+  emoji.style.position = "fixed";
+  emoji.style.top = "50%";
+  emoji.style.left = "50%";
+  emoji.style.fontSize = "60px";
+  emoji.style.transform = "translate(-50%, -50%)";
+  emoji.style.zIndex = "9999";
+  document.body.appendChild(emoji);
 
-function reset() {
-  [first, second, lock] = [null, null, false];
+  setTimeout(() => emoji.remove(), 1500); // remove after 1.5s
+
+  // Optionally, you can also add a "Try Again" button
+  alert("How dare you say NO! Try again 😛");
+};
+
+
+for (let i = 0; i < 5; i++) {
+  const heart = document.createElement("div");
+  heart.innerText = "😭";
+  heart.style.position = "fixed";
+  heart.style.fontSize = "40px";
+  heart.style.left = 50 + Math.random() * 200 + "px";
+  heart.style.top = 50 + Math.random() * 200 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1200);
 }
+
+const sevenDays = [
+  { text: "Phool for my fool 🌹", day: "Happy Rose Day" },
+  { text: "Will you be mine? 💌", day: "Propose Day" },
+  { text: "I ate your chocolate btw 🍫", day: "Chocolate Day" },
+  { text: "I promise to stay at your side 💕", day: "Promise Day" },
+  { text: "Virtual hug for ya! 🤗", day: "Hug Day" },
+  { text: "You wear my kisses better than me 😘", day: "Kiss Day" },
+  { text: "Happy Valentines Day ❤️", day: "Valentine's Day" }
+];
+
+let currentDay = 0;
+
+document.getElementById("yes-btn").onclick = () => {
+  document.getElementById("question").classList.add("hidden");
+  document.getElementById("valentine-response").classList.remove("hidden");
+  showDay(currentDay);
+};
+
+function showDay(index) {
+  const container = document.createElement("div");
+  container.id = "day-container";
+  container.innerHTML = `
+    <h2>${sevenDays[index].text}</h2>
+    <h3>HAPPY ${sevenDays[index].day.toUpperCase()} BABY!</h3>
+    <button id="next-day">Next ➡️</button>
+  `;
+  document.body.appendChild(container);
+
+  document.getElementById("next-day").onclick = () => {
+    container.remove();
+    currentDay++;
+    if (currentDay < sevenDays.length) {
+      showDay(currentDay);
+    } else {
+      alert("🎉 You reached the end of the 7-day surprise!");
+    }
+  };
+};
