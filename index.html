@@ -7,42 +7,34 @@
 </head>
 <body>
 
-<!-- Background Music -->
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Unlock Section -->
 <section id="unlock">
   <h1>🔐 Answer this to unlock 💖</h1>
   <p>What is my favourite mithai? 🍬</p>
   <input type="text" id="answer" placeholder="Type here...">
-  <button onclick="checkAnswer()">Unlock</button>
+  <button id="unlock-btn">Unlock</button>
   <p id="error"></p>
 </section>
 
-<!-- Game Section -->
 <section id="game" class="hidden">
   <h1>🧠 Match the memories 💕</h1>
   <div id="game-board"></div>
 </section>
 
-<!-- Yes No Section -->
 <section id="question" class="hidden">
   <h1>Will you be my Valentine? 💘</h1>
-
-  <!-- PLACEHOLDER FOR GIF -->
-  <div class="gif-placeholder">[ Add cute gif here ]</div>
-
+  <div class="gif-placeholder" id="gif-placeholder">[ Add cute gif here ]</div>
   <button id="yes-btn">YES 💖</button>
   <button id="no-btn">NO 💔</button>
+  <p id="no-text"></p>
+</section>
 
 <div id="valentine-response" class="hidden">
   <h2>🥰 So happy you said YES!</h2>
 </div>
-
-  <p id="no-text"></p>
-</section>
 
 <script src="script.js"></script>
 </body>

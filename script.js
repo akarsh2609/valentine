@@ -147,8 +147,10 @@ function popHearts(card) {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("no-btn").onclick = () => {
+window.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("unlock-btn").addEventListener("click", checkAnswer);
+
+  document.getElementById("no-btn").addEventListener("click", () => {
     for (let i = 0; i < 5; i++) {
       const emoji = document.createElement("div");
       emoji.innerText = "😭";
@@ -161,8 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => emoji.remove(), 1200);
     }
     alert("How dare you say NO! Try again 😛");
-  };
+  });
+
+  document.getElementById("yes-btn").addEventListener("click", () => {
+    document.getElementById("question").classList.add("hidden");
+    document.getElementById("valentine-response").classList.remove("hidden");
+    showDay(currentDay);
+  });
 });
+
 
 
 
@@ -177,12 +186,6 @@ const sevenDays = [
 ];
 
 let currentDay = 0;
-
-document.getElementById("yes-btn").onclick = () => {
-  document.getElementById("question").classList.add("hidden");
-  document.getElementById("valentine-response").classList.remove("hidden");
-  showDay(currentDay);
-};
 
 function showDay(index) {
   const container = document.createElement("div");
