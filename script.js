@@ -32,7 +32,17 @@ function startGame() {
   images.forEach(src => {
     const card = document.createElement("div");
     card.className = "card";
-    card.innerHTML = `<img src="${src}" style="display:none">`;
+    card.innerHTML = `
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="${src}">
+    </div>
+    <div class="card-back">
+      ❤️
+    </div>
+  </div>
+`;
+
     card.onclick = () => flip(card);
     board.appendChild(card);
   });
