@@ -147,20 +147,23 @@ function popHearts(card) {
 }
 
 
-document.getElementById("no-btn").onclick = () => {
-  for (let i = 0; i < 5; i++) {
-    const emoji = document.createElement("div");
-    emoji.innerText = "😭";
-    emoji.style.position = "fixed";
-    emoji.style.fontSize = "40px";
-    emoji.style.left = 50 + Math.random() * 200 + "px";
-    emoji.style.top = 50 + Math.random() * 200 + "px";
-    emoji.style.zIndex = 9999;
-    document.body.appendChild(emoji);
-    setTimeout(() => emoji.remove(), 1200);
-  }
-  alert("How dare you say NO! Try again 😛");
-};
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("no-btn").onclick = () => {
+    for (let i = 0; i < 5; i++) {
+      const emoji = document.createElement("div");
+      emoji.innerText = "😭";
+      emoji.style.position = "fixed";
+      emoji.style.fontSize = "40px";
+      emoji.style.left = 50 + Math.random() * 200 + "px";
+      emoji.style.top = 50 + Math.random() * 200 + "px";
+      emoji.style.zIndex = 9999;
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 1200);
+    }
+    alert("How dare you say NO! Try again 😛");
+  };
+});
+
 
 
 const sevenDays = [
