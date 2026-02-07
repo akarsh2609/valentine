@@ -146,35 +146,22 @@ function popHearts(card) {
   }
 }
 
+
 document.getElementById("no-btn").onclick = () => {
-  // Add crying emoji animation
-  const emoji = document.createElement("div");
-  emoji.innerText = "😭";
-  emoji.style.position = "fixed";
-  emoji.style.top = "50%";
-  emoji.style.left = "50%";
-  emoji.style.fontSize = "60px";
-  emoji.style.transform = "translate(-50%, -50%)";
-  emoji.style.zIndex = "9999";
-  document.body.appendChild(emoji);
-
-  setTimeout(() => emoji.remove(), 1500); // remove after 1.5s
-
-  // Optionally, you can also add a "Try Again" button
+  for (let i = 0; i < 5; i++) {
+    const emoji = document.createElement("div");
+    emoji.innerText = "😭";
+    emoji.style.position = "fixed";
+    emoji.style.fontSize = "40px";
+    emoji.style.left = 50 + Math.random() * 200 + "px";
+    emoji.style.top = 50 + Math.random() * 200 + "px";
+    emoji.style.zIndex = 9999;
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 1200);
+  }
   alert("How dare you say NO! Try again 😛");
 };
 
-
-for (let i = 0; i < 5; i++) {
-  const heart = document.createElement("div");
-  heart.innerText = "😭";
-  heart.style.position = "fixed";
-  heart.style.fontSize = "40px";
-  heart.style.left = 50 + Math.random() * 200 + "px";
-  heart.style.top = 50 + Math.random() * 200 + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 1200);
-}
 
 const sevenDays = [
   { text: "Phool for my fool 🌹", day: "Happy Rose Day" },
