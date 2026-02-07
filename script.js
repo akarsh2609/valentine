@@ -150,48 +150,55 @@ function popHearts(card) {
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("unlock-btn").addEventListener("click", checkAnswer);
 
-  document.getElementById("no-btn").addEventListener("click", () => {
-    for (let i = 0; i < 5; i++) {
-      const emoji = document.createElement("div");
-      emoji.innerText = "😭";
-      emoji.style.position = "fixed";
-      emoji.style.fontSize = "40px";
-      emoji.style.left = 50 + Math.random() * 200 + "px";
-      emoji.style.top = 50 + Math.random() * 200 + "px";
-      emoji.style.zIndex = 9999;
-      document.body.appendChild(emoji);
+let noClickCount = 0; // counter for NO button presses
 
-      // Animate them floating upward
-      let top = parseInt(emoji.style.top);
-      const floatInterval = setInterval(() => {
-        top -= 2;
-        emoji.style.top = top + "px";
-        if (top < -50) {
-          clearInterval(floatInterval);
-          emoji.remove();
-        }
-      }, 20);
-    }
+document.getElementById("no-btn").addEventListener("click", () => {
+  noClickCount++; // increment on each click
 
-    // Show temporary on-page text
-    const msg = document.createElement("div");
-    msg.innerText = "💔 How dare you say NO! Try again 😛";
-    msg.style.position = "fixed";
-    msg.style.top = "20%";
-    msg.style.left = "50%";
-    msg.style.transform = "translateX(-50%)";
-    msg.style.background = "rgba(255,255,255,0.9)";
-    msg.style.padding = "15px 25px";
-    msg.style.border = "2px solid red";
-    msg.style.borderRadius = "10px";
-    msg.style.fontSize = "20px";
-    msg.style.zIndex = 10000;
-    document.body.appendChild(msg);
+  // Floating crying emojis
+  for (let i = 0; i < 5; i++) {
+    const emoji = document.createElement("div");
+    emoji.innerText = "😭";
+    emoji.style.position = "fixed";
+    emoji.style.fontSize = 40 + noClickCount * 2 + "px"; // emojis slightly bigger each time
+    emoji.style.left = 50 + Math.random() * 200 + "px";
+    emoji.style.top = 50 + Math.random() * 200 + "px";
+    emoji.style.zIndex = 9999;
+    document.body.appendChild(emoji);
 
-    setTimeout(() => {
-      msg.remove();
-    }, 2000);
-  });
+    // Animate upward
+    let top = parseInt(emoji.style.top);
+    const floatInterval = setInterval(() => {
+      top -= 2;
+      emoji.style.top = top + "px";
+      if (top < -50) {
+        clearInterval(floatInterval);
+        emoji.remove();
+      }
+    }, 20);
+  }
+
+  // On-page NO text
+  const msg = document.createElement("div");
+  const oos = "OO".repeat(noClickCount + 1); // add extra O each click
+  msg.innerText = `💔 How dare you say N${oos}!!`;
+  msg.style.position = "fixed";
+  msg.style.top = "20%";
+  msg.style.left = "50%";
+  msg.style.transform = "translateX(-50%)";
+  msg.style.background = "rgba(255,255,255,0.9)";
+  msg.style.padding = 15 + noClickCount * 2 + "px 25px"; // grow padding
+  msg.style.border = "2px solid red";
+  msg.style.borderRadius = "10px";
+  msg.style.fontSize = 20 + noClickCount * 2 + "px"; // grow font
+  msg.style.zIndex = 10000;
+  document.body.appendChild(msg);
+
+  setTimeout(() => {
+    msg.remove();
+  }, 2000);
+});
+
 
 
   document.getElementById("yes-btn").addEventListener("click", () => {
