@@ -117,3 +117,18 @@ button:hover {
   }
 }
 
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(7, 80px); /* 7 columns */
+  grid-auto-rows: 80px; /* card size */
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Hide extra grid spaces if needed */
+#game-board .card {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s;
+}
