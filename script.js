@@ -27,9 +27,9 @@ let images = [
   "images/pic5.jpeg","images/pic5.jpeg",
   "images/pic6.jpeg","images/pic6.jpeg",
   "images/pic7.jpeg","images/pic7.jpeg",
-  "images/pic8.jpeg","images/pic8.jpeg",
+  "images/pic8.jpeg","images/pic8-1.jpeg",
   "images/pic9.jpeg","images/pic9.jpeg",
-  "images/pic10.jpeg","images/pic10.jpeg"
+  "images/pic10.jpeg","images/pic10-1.jpeg"
 ];
 
 let first = null, second = null, lock = false, matched = 0;
