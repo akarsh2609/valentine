@@ -155,6 +155,7 @@ let noClickCount = 0; // counter for NO button presses
 document.getElementById("no-btn").addEventListener("click", () => {
   noClickCount++; // increment on each click
 
+  noClickCount = Math.max(noClickCount, 10);
   // Floating crying emojis
   for (let i = 0; i < 5; i++) {
     const emoji = document.createElement("div");
