@@ -33,40 +33,45 @@ let images = [
 ];
 
 const cardData = [
-  { img: "pic1.jpg", matchGroup: "a" },
-  { img: "pic2.jpg", matchGroup: "b" },
-  { img: "pic3.jpg", matchGroup: "c" },
-  { img: "pic4.jpg", matchGroup: "d" },
-  { img: "pic5.jpg", matchGroup: "e" },
-  { img: "pic6.jpg", matchGroup: "f" },
-  { img: "pic7.jpg", matchGroup: "g" },
-  { img: "pic8.jpg", matchGroup: "h" },
-  { img: "pic8-1.jpg", matchGroup: "h" },
-  { img: "pic9.jpg", matchGroup: "i" },
-  { img: "pic10.jpg", matchGroup: "j" },
-  { img: "pic10-1.jpg", matchGroup: "j" }
+  { img: "pic1.jpeg", matchGroup: "a" },
+  { img: "pic2.jpeg", matchGroup: "b" },
+  { img: "pic3.jpeg", matchGroup: "c" },
+  { img: "pic4.jpeg", matchGroup: "d" },
+  { img: "pic5.jpeg", matchGroup: "e" },
+  { img: "pic6.jpeg", matchGroup: "f" },
+  { img: "pic7.jpeg", matchGroup: "g" },
+  { img: "pic8.jpeg", matchGroup: "h" },
+  { img: "pic8-1.jpeg", matchGroup: "h" },
+  { img: "pic9.jpeg", matchGroup: "i" },
+  { img: "pic10.jpeg", matchGroup: "j" },
+  { img: "pic10-1.jpeg", matchGroup: "j" }
   // ... continue for all 15 images
 ];
 
+function shuffle(array) {
+  return array.sort(() => 0.5 - Math.random());
+}
 
 let first = null, second = null, lock = false, matched = 0;
 
 function startGame() {
-  images.sort(() => 0.5 - Math.random());
   const board = document.getElementById("game-board");
   board.innerHTML = "";
 
+  const shuffledData = shuffle([...cardData]); // make a copy and shuffle
   let imgIndex = 0;
 
   for (let r = 0; r < heartMap.length; r++) {
     for (let c = 0; c < heartMap[r].length; c++) {
       if (heartMap[r][c] === 1) {
+        const data = shuffledData[imgIndex]; // use shuffled cardData
         const card = document.createElement("div");
         card.className = "card";
+        card.dataset.match = data.matchGroup;
         card.innerHTML = `
           <div class="card-inner">
             <div class="card-front">
-              <img src="${images[imgIndex]}">
+              <img src="images/${data.img}">
             </div>
             <div class="card-back">❤️</div>
           </div>
@@ -75,7 +80,6 @@ function startGame() {
         board.appendChild(card);
         imgIndex++;
       } else {
-        // Add an invisible placeholder to keep grid spacing
         const placeholder = document.createElement("div");
         placeholder.style.width = "80px";
         placeholder.style.height = "80px";
